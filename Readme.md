@@ -21,15 +21,15 @@ Fine-tuning ColPali-v1.3 on domain-specific data significantly improves retrieva
 
 ### Example Query
 
-**User Query**: "在提及「精神衛生法」的文件中，條文的依據變更了哪個條次？"
+**User Query**: 在提及「精神衛生法」的文件中，條文的依據變更了哪個條次？
 
 **Before fine-tuning:**
 
-<img src="metadata/before_ft.png" alt="Before fine-tuning" width="800">
+<img src="metadata/before_ft.png" alt="Before fine-tuning" width="400">
 
 **After fine-tuning:**
 
-<img src="metadata/after_ft.png" alt="After fine-tuning" width="800">
+<img src="metadata/after_ft.png" alt="After fine-tuning" width="400">
 
 ## Requirments
 
