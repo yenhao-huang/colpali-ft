@@ -2,7 +2,9 @@
 
 ColPali is a multimodal retrieval model designed for document-level retrieval over text and images, enabling fine-grained semantic matching in OCR-heavy and layout-rich documents.
 
-<img src="metadata/arch.png" alt="arch" width="100%">
+<p align="center">
+<img src="metadata/arch.png" alt="arch" width="80%">
+</p>
 
 ## Results
 
