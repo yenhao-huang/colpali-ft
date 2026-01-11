@@ -23,13 +23,18 @@ Fine-tuning ColPali-v1.3 on domain-specific data significantly improves retrieva
 
 **User Query**: 在提及「精神衛生法」的文件中，條文的依據變更了哪個條次？
 
-**Before fine-tuning:**
-
-<img src="metadata/before_ft.png" alt="Before fine-tuning" width="400">
-
-**After fine-tuning:**
-
-<img src="metadata/after_ft.png" alt="After fine-tuning" width="400">
+<table>
+<tr>
+<td width="50%">
+<b>Before fine-tuning:</b><br>
+<img src="metadata/before_ft.png" alt="Before fine-tuning" width="100%">
+</td>
+<td width="50%">
+<b>After fine-tuning:</b><br>
+<img src="metadata/after_ft.png" alt="After fine-tuning" width="100%">
+</td>
+</tr>
+</table>
 
 ## Requirments
 
