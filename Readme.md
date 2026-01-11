@@ -1,11 +1,8 @@
 # ColPali Fine-tuning
 
-Fine-tune ColPali model for better document retrieval using:
+ColPali is a multimodal retrieval model designed for document-level retrieval over text and images, enabling fine-grained semantic matching in OCR-heavy and layout-rich documents.
 
-- **Contrastive Learning** - Match queries with correct document images
-- **Multi-modal** - Process both text and images
-- **LoRA** - Efficient training with fewer parameters
-- **4-bit Quantization** - Run on consumer GPUs
+<img src="metadata/arch.png" alt="arch" width="100%">
 
 ## Results
 
@@ -103,3 +100,41 @@ inference:
 debug:
   dir: null  # Set to a directory path to enable debug output
 ```
+
+
+## Details
+
+**Architecture**
+
+ColPali follows a PaLiGemma + Projector + ColBERT design for multimodal retrieval.
+
+```
+PaLiGemma (SigLIP + SentencePiece, Gemma 2B)  
+→ Projector (vision–text alignment)  
+→ ColBERT (late-interaction retrieval)
+```
+
+**Features**
+
+- **Contrastive Learning** - Match queries with correct document images
+- **Multi-modal** - Process both text and images
+- **LoRA** - Efficient training with fewer parameters
+- **4-bit Quantization** - Run on consumer GPUs
+
+**Training Method**
+
+* Type: Contrastive learning
+* Loss function: `ColbertPairwiseCELoss`
+* Loss:
+
+  ```python
+  loss = F.softplus((neg_scores - pos_scores) / temperature).mean()
+  ```
+* **Hard negatives**:
+
+  * Selected from top-1 / top-2 retrieval predictions
+  * Use top-2 when top-1 equals the positive:
+
+    ```python
+    neg_scores = torch.where(top2[:, 0] == pos_scores, top2[:, 1], top2[:, 0])
+    ```
