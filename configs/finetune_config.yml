@@ -1,0 +1,68 @@
+# ColPali Fine-tuning Configuration
+# This config file contains all parameters for fine-tuning the ColPali model
+
+# Model Configuration
+model:
+  # Path or name of the pre-trained ColPali model
+  name: "/tmp2/share_data/models--vidore--colpali-v1.3"
+
+  # Quantization strategy for model loading
+  # Options: "4bit", "8bit", null (for no quantization)
+  quantization_strategy: "4bit"
+
+# Data Configuration
+data:
+  # Path to the training data JSON file
+  path: "data/example.json"
+
+  # Proportion of data to use for testing (0.0-1.0)
+  test_size: 0.2
+
+  # Random seed for reproducibility
+  seed: 42
+
+# Training Configuration
+training:
+  # Directory to save model checkpoints
+  output_dir: "core/colpali-finetune/checkpoints"
+
+  # Number of training epochs
+  num_train_epochs: 3
+
+  # Batch size per device for training
+  per_device_train_batch_size: 4
+
+  # Batch size per device for evaluation
+  per_device_eval_batch_size: 4
+
+  # Number of gradient accumulation steps
+  gradient_accumulation_steps: 4
+
+  # Learning rate for training
+  learning_rate: 1.0e-4  # 0.0001
+
+  # Number of warmup steps for learning rate scheduler
+  warmup_steps: 1
+
+  # Number of steps between logging training metrics
+  logging_steps: 20
+
+  # Maximum number of checkpoints to keep
+  save_total_limit: 5
+
+# Inference Configuration
+inference:
+  # Run inference before training
+  run_pre_training: true
+
+  # Run inference after training
+  run_post_training: true
+
+  # Number of examples to use for inference evaluation
+  n_examples: 3
+
+# Debug Configuration
+debug:
+  # Directory to save debug information (query_outputs, doc_outputs, loss)
+  # Set to null to disable debug info saving
+  dir: null

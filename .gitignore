@@ -1,0 +1,4 @@
+.claude
+wandb
+**/__pycache__
+core/colpali-finetune/checkpoints
